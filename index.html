@@ -1,0 +1,220 @@
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BrightStar Registration</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      height: 100%;
+      background: transparent;
+    }
+
+    .field {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .grass {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 150px;
+      background: linear-gradient(to top, #228B22 0%, #6B8E23 100%);
+    }
+
+    .flower {
+      position: absolute;
+      bottom: 130px;
+      width: 20px;
+      height: 100px;
+      transform-origin: bottom center;
+      animation: sway 2s ease-in-out infinite;
+    }
+
+    .stem {
+      width: 4px;
+      height: 100%;
+      background: green;
+      margin: auto;
+    }
+
+    .petal {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 30px;
+      background: pink;
+      border-radius: 50%;
+      box-shadow:
+        -20px 0 pink,
+        20px 0 pink,
+        0 -20px pink,
+        0 20px pink;
+    }
+
+    @keyframes sway {
+      0% { transform: rotate(0deg); }
+      20% { transform: rotate(8deg); }
+      50% { transform: rotate(-10deg); }
+      80% { transform: rotate(6deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    .register-container {
+      max-width: 500px;
+      margin: 100px auto;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    input[type="checkbox"] {
+      width: auto;
+      margin-right: 10px;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      font-weight: normal;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="field" id="field">
+    <div class="grass"></div>
+  </div>
+
+  <div class="register-container">
+    <h2>Register for BrightStar</h2>
+    <form action="/register" method="POST">
+      <label for="name">Name *</label>
+      <input type="text" name="name" required />
+
+      <label for="dob">Date of Birth</label>
+      <input type="date" name="dob" />
+
+      <label for="class">Class *</label>
+      <select name="class" required>
+        <option value="">Select Class</option>
+        <option value="Adventurers Class">Adventurers Class</option>
+        <option value="Friend Class">Friend Class</option>
+        <option value="Companion Class">Companion Class</option>
+        <option value="Explorer Class">Explorer Class</option>
+        <option value="Ranger Class">Ranger Class</option>
+        <option value="Guide Class">Guide Class</option>
+        <option value="Ambassador">Ambassador</option>
+        <option value="SYL">SYL</option>
+        <option value="Other">Other</option>
+
+      </select>
+
+      <label class="checkbox-label">
+        <input type="checkbox" name="aspiring" />
+        Aspiring
+      </label>
+
+      <label for="phone">Phone</label>
+      <input type="tel" name="phone" />
+
+      <label for="amount">Amount</label>
+      <input type="number" step="0.01" name="amount" />
+
+      <button type="submit">Submit</button>
+    </form>
+    <div class="footer">May God bless your journey 🌟</div>
+  </div>
+
+  <script>
+    const field = document.getElementById('field');
+    for (let i = 0; i < 30; i++) {
+      const flower = document.createElement('div');
+      flower.className = 'flower';
+      flower.style.left = `${Math.random() * 100}%`;
+      flower.style.animationDelay = `${Math.random() * 2}s`;
+      const stem = document.createElement('div');
+      stem.className = 'stem';
+      const petal = document.createElement('div');
+      petal.className = 'petal';
+      flower.appendChild(stem);
+      flower.appendChild(petal);
+      field.appendChild(flower);
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
